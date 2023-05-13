@@ -1,0 +1,87 @@
+package linearsearch;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class linearSearch {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //declare a variable is number of array
+        int arrayLength = 0;
+        arrayLength = checkValidNumber(arrayLength, "Enter number of array:");
+
+        //Request user input a search value
+        System.out.println("Enter search value: ");
+        int valueSearch = sc.nextInt();
+
+        //declare a array and assign a array random
+        int[] arr = randomValueArray(arrayLength);
+        
+        //call methof displayArray
+        displayArray(arr);
+        
+        //call method searchValue
+        searchValue(arr, valueSearch);
+    }
+
+    //Notifi input number of Array and check is Decimal, integer > 0
+    private static int checkValidNumber(int valueCheck, String message) {
+        boolean isValidNumber = false;
+        Scanner scanner = new Scanner(System.in);
+        while (!isValidNumber) {
+            try {
+                System.out.println(message);
+                String valueInput;
+                valueInput = scanner.nextLine();
+                valueCheck = Integer.parseInt(valueInput);
+                if (valueCheck <= 0) {
+                    throw new Exception();
+                }
+                isValidNumber = true;
+            } catch (Exception e) {
+                System.out.println("Number illegel. Try again!");
+            }
+        }
+        return valueCheck;
+    }
+
+    //Assign each element of array is a random value, and return a array
+    private static int[] randomValueArray(int arrayLength) {
+        int[] arr = new int[arrayLength];
+        Random random = new Random();
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(arr.length);
+        }
+        return arr;
+    }
+
+    //Display value of each element of array
+    private static void displayArray(int arr[]) {
+        System.out.print("The array: [");
+        for(int i=0; i<arr.length; i++) {
+          System.out.print(arr[i]);
+          if(i<arr.length-1) {
+              System.out.print(", ");
+          }
+        }
+        System.out.println("]");
+    }
+    
+    //Use linear Search to find first element have value equal value search in array
+    private static void searchValue(int arr[], int valueSearch) {
+        //index is postion >=0
+        int positionFind = -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == valueSearch) {
+                positionFind = i;
+                break;
+            }
+        }
+        if (positionFind >= 0) {
+            System.out.println("Found " + valueSearch + " at index: " + positionFind);
+        } else {
+            System.out.println("Not found " + valueSearch + " in array!");
+        }
+    }
+    
+}
