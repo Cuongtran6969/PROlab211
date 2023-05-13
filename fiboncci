@@ -1,0 +1,39 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package lab211.fibonacci;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author HP
+ */
+public class Fibonacci {
+
+    public static void main(String[] args) {
+        //pass a value is the number of fiboncci you want to get
+        displayFibonacci(45);
+    }
+
+    //use array to loop to each element and get fibonacci of element by returnFibonacciOfNumber 
+    //and display to screen
+    private static void displayFibonacci(int n) {
+        System.out.println(n + " sequence fibonacci");
+        for (int i = 0; i < n; i++) {
+            System.out.print(returnFibonacciOfNumber(i) + " ");
+        }
+    }
+    
+    //fibonacci of 0 and 1 is 1; 
+    //f(n) = f(n-1)+f(n-2) so it will call method until parameter is 1 or 0;
+    private static int returnFibonacciOfNumber(int number) {
+        if (number == 0 || number == 1) {
+            return 1;
+        } else {
+            return returnFibonacciOfNumber(number - 1) + returnFibonacciOfNumber(number - 2);
+        }
+    }
+}
