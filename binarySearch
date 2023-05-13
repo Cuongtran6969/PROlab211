@@ -1,0 +1,120 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package lab211.binarySearch;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author HP
+ */
+public class binarySearch {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //declare a variable is number of array
+        int arrayLength = 0;
+        arrayLength = checkValidNumber(arrayLength, "Enter number of array:");
+
+        //declare a array and assign a array random
+        int[] arr = randomValueArray(arrayLength);
+
+        //Request user input a search value
+        int valueSearch = checkValidNumber(arrayLength, "Enter search value: ");
+
+        sortArrayByBubbleSort(arr);
+        System.out.print("Sorted array: ");
+        displayArray(arr);
+
+        //find valueSearch in array
+        searchValueByBinarySearch(arr, valueSearch);
+    }
+
+    //Notifi input number of Array and check is Decimal, integer > 0
+    private static int checkValidNumber(int valueCheck, String message) {
+        boolean isValidNumber = false;
+        Scanner scanner = new Scanner(System.in);
+        while (!isValidNumber) {
+            try {
+                System.out.println(message);
+                String valueInput;
+                valueInput = scanner.nextLine();
+                valueCheck = Integer.parseInt(valueInput);
+                if (valueCheck < 0) {
+                    throw new Exception();
+                }
+                isValidNumber = true;
+            } catch (Exception e) {
+                System.out.println("Number illegel. Try again!");
+            }
+        }
+        return valueCheck;
+    }
+
+    //Assign each element of array is a random value, and return a array
+    private static int[] randomValueArray(int arrayLength) {
+        int[] arr = new int[arrayLength];
+        Random random = new Random();
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(arr.length);
+        }
+        return arr;
+    }
+
+    //Display value of each element of array
+    private static void displayArray(int arr[]) {
+        System.out.print("The array: [");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+
+    private static void sortArrayByBubbleSort(int arr[]) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+
+    //Use binary to search
+    //The binarySearch will active when left <= right(left is head, right is tail and situation = active when only 2 element)
+    //target: will compare the value in middle array with valueSearch
+    //if value search bigger than value of middle will find in right side
+    //+ So we start search from middle + 1 to end array 
+    //if value search smaller than value of middle will find in left side
+    //+ So we start search from head array to middle - 1 
+    private static void searchValueByBinarySearch(int arr[], int valueSearch) {
+        int posFind = -1;
+        int left = 0;
+        int right = arr.length - 1;
+        while (left <= right) {
+            int middle = (right + left) / 2;
+            if (arr[middle] == valueSearch) {
+                posFind = middle;
+                break;
+            } else if (arr[middle] < valueSearch) {
+                left = middle + 1;
+            } else {
+                right = middle - 1;
+            }
+        }
+        if (posFind >= 0) {
+            System.out.println("Found " + valueSearch + " at index: " + posFind);
+        } else {
+            System.out.println("Not found " + valueSearch + " in array !");
+        }
+    }
+}
