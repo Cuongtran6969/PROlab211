@@ -11,8 +11,7 @@ public class linearSearch {
         arrayLength = checkValidNumber(arrayLength, "Enter number of array:");
 
         //Request user input a search value
-        System.out.println("Enter search value: ");
-        int valueSearch = sc.nextInt();
+        int valueSearch = checkValidNumber(arrayLength, "Enter search value: ");
 
         //declare a array and assign a array random
         int[] arr = randomValueArray(arrayLength);
