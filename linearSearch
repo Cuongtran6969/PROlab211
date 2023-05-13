@@ -33,11 +33,14 @@ public class linearSearch {
                 System.out.println(message);
                 String valueInput;
                 valueInput = scanner.nextLine();
+                //if value input is a alphabet or Special characters it will throw a error: NumberFormatException
                 valueCheck = Integer.parseInt(valueInput);
                 if (valueCheck <= 0) {
                     throw new Exception();
                 }
+               //when not occur error it will acitve and while loop will stop
                 isValidNumber = true;
+              //catch all error in above
             } catch (Exception e) {
                 System.out.println("Number illegel. Try again!");
             }
