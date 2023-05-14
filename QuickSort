@@ -1,0 +1,102 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package lab211.quickSort;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author HP
+ */
+public class quickSort {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //declare a variable is number of array
+        //int arrayLength = 0;
+        //arrayLength = checkValidNumber(arrayLength, "Enter number of array:");
+        int[] arr = new int[]{3, 4, -2, 9, -6, 5, -9};
+        displayArray(arr);
+        int left = 0;
+        int right = arr.length - 1;
+        quickSort(arr, left, right);
+        displayArray(arr);
+    }
+
+    //Notifi input number of Array and check is Decimal, integer > 0
+    private static int checkValidNumber(int valueCheck, String message) {
+        boolean isValidNumber = false;
+        Scanner scanner = new Scanner(System.in);
+        while (!isValidNumber) {
+            try {
+                System.out.println(message);
+                String valueInput;
+                valueInput = scanner.nextLine();
+                valueCheck = Integer.parseInt(valueInput);
+                if (valueCheck <= 0) {
+                    throw new Exception();
+                }
+                isValidNumber = true;
+            } catch (Exception e) {
+                System.out.println("Number illegel. Try again!");
+            }
+        }
+        return valueCheck;
+    }
+
+    private static void quickSort(int arr[], int left, int right) {
+        int middle = (left + right) / 2;
+        int i = left;
+        int j = right;
+
+        int pri = arr[middle];
+        //will practive until i>j mean in left side contain small than pri
+        //right side contain bigger than pri
+        while (i <= j) {
+            //run from head to middle check have arr[i] > pri will stop
+            //and we have in index have element < privor
+            while (arr[i] < pri) {
+                i++;
+            }
+            //run from last to middle check have arr[j] < pri will stop
+            //and we have in index have element < privor
+            while (arr[j] > pri) {
+                j--;
+            }
+            //practive swap two element 
+            //and continue move i to next, move j to prev
+            if (i <= j) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                i++;
+                j--;
+            }
+        }
+        
+        //left = 0 , j is index privor 
+        if (left < j) {
+            //sort left side of privor
+            quickSort(arr, left, j);
+        }
+        //right = arrLength-1 , i is index privor 
+        if (right > i) {
+            //sort left side of privor
+            quickSort(arr, i, right);
+        }
+    }
+
+    private static void displayArray(int arr[]) {
+        System.out.print("The array: [");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
