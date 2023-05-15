@@ -1,0 +1,75 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package lab211.StringCount;
+
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+
+/**
+ *
+ * @author HP
+ */
+public class StringCount {
+    public static void main(String[] args) {
+        String userContent = inputUserContent();
+        createArray(userContent);
+    }
+    //method access user input content
+    private static String inputUserContent() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your content: ");
+        String stringInput = sc.nextLine();
+        return stringInput;
+    }
+
+    //method create one array contain list word and one array contain character
+    //call mehthod count Display for each array
+    private static void createArray(String userContent) {
+        String[] listLetter = userContent.split(" ");
+        String[] listCharacter = userContent.split("");
+        countDisplay(listLetter);
+        countDisplay(listCharacter);
+    }
+
+    //count the number display of word/character
+    private static void countDisplay(String[] list) {
+        //get a array contain list unique value
+        String[] listUnique = getDifferentValue(list);
+        int numberDisplay = 0;
+        System.out.print("{");
+        //use each unique value to count how many equal value in original list
+        for (int i = 0; i < listUnique.length; i++) {
+            String currentLetter = listUnique[i] + "";
+            numberDisplay = 0;
+            for (int j = 0; j < list.length; j++) {
+                if (currentLetter.compareTo(list[j] + "") == 0) {
+                    numberDisplay++;
+                }
+            }
+            System.out.print(currentLetter + "=" + numberDisplay);
+            if (i < listUnique.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("}");
+    }
+    //return a list only contain value unique (different value)
+    private static String[] getDifferentValue(String[] list) {
+        //use Linked Hash set to store unique of all value in list
+        LinkedHashSet<String> listUnique = new LinkedHashSet<>();
+        for (int i = 0; i < list.length; i++) {
+            if (list[i].compareTo(" ") != 0) {
+                listUnique.add(list[i]);
+            }
+        }
+        //create a array have length = listUnique size
+        String[] array = new String[listUnique.size()];
+        //covert LinkedHashSet to array;
+        array = listUnique.toArray(array);
+        return array;
+    }
+}
