@@ -18,7 +18,7 @@ public class quickSort {
         //declare a variable is number of array
         //int arrayLength = 0;
         //arrayLength = checkValidNumber(arrayLength, "Enter number of array:");
-        int[] arr = new int[]{3, 4, -2, 9, -6, 5, -9};
+        int[] arr = randomValueArray(arrayLength);
         displayArray(arr);
         int left = 0;
         int right = arr.length - 1;
@@ -46,7 +46,16 @@ public class quickSort {
         }
         return valueCheck;
     }
-
+    
+    private static int[] randomValueArray(int arrayLength) {
+        int[] arr = new int[arrayLength];
+        Random random = new Random();
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(arr.length);
+        }
+        return arr;
+    }
+    
     private static void quickSort(int arr[], int left, int right) {
         int middle = (left + right) / 2;
         int i = left;
