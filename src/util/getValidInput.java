@@ -19,12 +19,14 @@ import java.util.Scanner;
 public class getValidInput {
 
     /**
+     * check valid input value and return value is integer pass condition is in
+     * a range min to max, and no error occurs
      *
-     * @param messageInfo
-     * @param messageErrorOutOFRange
-     * @param messageErrorInvalidNumber
-     * @param min
-     * @param max
+     * @param messageInfo               message for user input
+     * @param messageErrorOutOFRange    message error when value out of range
+     * @param messageErrorInvalidNumber message when occur error
+     * @param min                       value return must big than min
+     * @param max                       value return must small than max
      * @return
      */
     public static int getInt(
@@ -49,9 +51,11 @@ public class getValidInput {
     }
 
     /**
+     * check value input is a string, check empty, check exception and return
+     * invalid string
      *
-     * @param messageInfo
-     * @param messageErrorInvalidString
+     * @param messageInfo               message for user input
+     * @param messageErrorInvalidString message when occur error
      * @return
      */
     public static String getString(
@@ -75,103 +79,96 @@ public class getValidInput {
     }
 
     /**
+     * return value input is data type is double, between min and max and and no
+     * error occurs
      *
-     * @param messageInfo
-     * @param messageErrorOutOFRange
-     * @param messageErrorInvalidString
-     * @param min
-     * @param max
+     * @param messageInfo   message for user input
+     * @param salaryInvalid message when occur error
+     * @param min value     return must big than min
+     * @param max value     return must small than max
      * @return
      */
-    public static double getDouble(
-            String messageInfo,
-            String messageErrorOutOFRange,
-            String messageErrorInvalidString,
-            int min,
-            int max
-    ) {
-        while (true) {
-            try {
-                System.out.println(messageInfo);
-                double inputDouble = constant.SCANNER.nextDouble();
-                constant.SCANNER.nextLine();
-                if (inputDouble >= min || inputDouble <= max) {
-                    return inputDouble;
-                }
-                System.out.println(messageErrorOutOFRange);
-            } catch (Exception e) {
-                System.out.println(messageErrorInvalidString);
-            }
-        }
-    }
-    public static String getStringByRegex(
-            String messageInfo,
-            String messageErrorInvalidString,
-            String regex
-    ) {
-      while(true) {
-        try{
-            System.out.println(messageInfo);
-            String stringValue = constant.SCANNER.nextLine();
-            if(stringValue.matches(regex)) {
-              return stringValue;
-            }
-        } catch (Exception e){
-            System.out.println(e);   
-        }
-          System.out.println(messageErrorInvalidString);
-      }
-    }
-    //return double variable
     public static double getDouble(
             String messageInfo,
             String salaryInvalid,
             double min,
             double max
     ) {
-    do {
+        do {
             try {
                 System.out.println(messageInfo);
                 double inputNumber = Integer.parseInt(constant.SCANNER.nextLine());
                 if (inputNumber >= min || inputNumber <= max) {
                     return inputNumber;
-                }else{
+                } else {
                     System.out.println("Input must be in range [" + min + "," + max + "]");
                 }
             } catch (NumberFormatException e) {
                 System.out.println(salaryInvalid);
             }
         } while (true);
-    
     }
-    
-    //return valid date
+
+    /**
+     * return a string have if input value matches with parameter is regular
+     * expression and catch error if occur a error in reading input
+     *
+     * @param messageInfo               message for user input
+     * @param messageErrorInvalidString message when occur error
+     * @param regex                     regular express to check string matches
+     * @return
+     */
+    public static String getStringByRegex(
+            String messageInfo,
+            String messageErrorInvalidString,
+            String regex
+    ) {
+        while (true) {
+            try {
+                System.out.println(messageInfo);
+                String stringValue = constant.SCANNER.nextLine();
+                if (stringValue.matches(regex)) {
+                    return stringValue;
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            System.out.println(messageErrorInvalidString);
+        }
+    }
+
+    /**
+     * use SimpleDateFormat to create a format according to the regular express
+     * and set date in strict mode, covert string to format date, checks if it
+     * is a date in the future, the function will give an error and ask the user
+     * to enter it again, otherwise will return this date
+     *
+     * @param messageInfo  message for user input
+     * @param messageError message if occur error
+     * @param regex        regular express of format date
+     * @return
+     */
     public static Date getDate(
             String messageInfo,
             String messageError,
             String regex
     ) {
-      while(true) {
-       try{
-         System.out.println(messageInfo);
-         String stringDate = constant.SCANNER.nextLine();
-         //create format date from regex
-         SimpleDateFormat format = new SimpleDateFormat(regex);
-         format.setLenient(false);
-         //convert string to Date
-         Date date = format.parse(stringDate);
-         //get current date
-         Date currentDate = new Date();
-         //if date than current date
-         if(date.after(currentDate)) {
-             System.out.println("Date can't be future");
-         }else{ 
-            return date;
-         }
-       } catch (Exception e){
-           System.out.println(messageError);
-       }
-      }
+        while (true) {
+            try {
+                System.out.println(messageInfo);
+                String stringDate = constant.SCANNER.nextLine();
+                SimpleDateFormat format = new SimpleDateFormat(regex);
+                format.setLenient(false);
+                Date date = format.parse(stringDate);
+                Date currentDate = new Date();
+                if (date.after(currentDate)) {
+                    System.out.println("Date can't be future");
+                } else {
+                    return date;
+                }
+            } catch (Exception e) {
+                System.out.println(messageError);
+            }
+        }
     }
-    
 }
