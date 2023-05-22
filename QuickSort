@@ -16,8 +16,8 @@ public class quickSort {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         //declare a variable is number of array
-        //int arrayLength = 0;
-        //arrayLength = checkValidNumber(arrayLength, "Enter number of array:");
+        int arrayLength = 0;
+        arrayLength = checkValidNumber(arrayLength, "Enter number of array:");
         int[] arr = randomValueArray(arrayLength);
         displayArray(arr);
         int left = 0;
