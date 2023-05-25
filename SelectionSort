@@ -1,0 +1,104 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package lab211.selectionSort;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author HP
+ */
+public class SelectionSort {
+
+    public static void main(String[] args) {
+        int length = 0;
+        length = checkValidNumber(length, "Enter array length");
+        int[] arr = randomValueArray(length);
+        displayArray(arr, "Unsort array: ");
+        SortArrayByselectionSort(arr);
+        displayArray(arr, "Sorted array: ");
+    }
+/**
+ * sort array by selection sort, the target is get index of min value in 
+ * array, we use first array to loop each element, and second loop in first loop
+ * is compare the current index first with each element in loop second, compare 
+ * current value of first loop with each value of second loop, if have value 
+ * small then assign this index of second loop for min value after found index 
+ * min, after done second loop we swap value of index current with index have min
+ * index
+ * @param arr 
+ */
+    private static void SortArrayByselectionSort(int arr[]) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[min]) {
+                    min = j;
+                }
+            }
+            int temp = arr[i];
+            arr[i] = arr[min];
+            arr[min] = temp;
+        }
+    }
+/**
+ * create a array have length equal array root, use loop, each element will
+ * get a value random from method random
+ * @param arrayLength is length of array
+ * @return array contain random value
+ */
+    private static int[] randomValueArray(int arrayLength) {
+        int[] arr = new int[arrayLength];
+        Random random = new Random();
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(arr.length);
+        }
+        return arr;
+    }
+
+    /**
+     * Message input number of Array and check is Decimal, integer > 0
+     * @param valueCheck is value of length root
+     * @param message    message for user input
+     * @return value of length after input have checked
+     */
+    private static int checkValidNumber(int valueCheck, String message) {
+        boolean isValidNumber = false;
+        Scanner scanner = new Scanner(System.in);
+        while (!isValidNumber) {
+            try {
+                System.out.println(message);
+                String valueInput;
+                valueInput = scanner.nextLine();
+                valueCheck = Integer.parseInt(valueInput);
+                if (valueCheck <= 0) {
+                    throw new Exception();
+                }
+                isValidNumber = true;
+            } catch (Exception e) {
+                System.out.println("Number illegel. Try again!");
+            }
+        }
+        return valueCheck;
+    }
+/**
+ * print value of each element of array with message is state sorted or sorted
+ * array, with print according format
+ * @param arr     array want to print
+ * @param message message is state of array
+ */
+    private static void displayArray(int arr[], String message) {
+        System.out.print(message + ": [");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
