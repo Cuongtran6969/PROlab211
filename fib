@@ -1,53 +1,48 @@
 /*
-    “Hello world!"
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package J1.S.P0009;
+package lab211.fibonacci;
+
+import java.util.Scanner;
 
 /**
  *
- * @author tranh
+ * @author HP
  */
-public class Main {
+public class Fibonacci {
 
     public static void main(String[] args) {
-        // Step 1: Find 45 sequence of Fibonacci
-        int[] fiboArray = findFibonacciSequence(200);
-        // Step 2: Display 45 sequence of Fibonacci
-        displayFibonacciSequence(fiboArray);
-
+        Scanner sc = new Scanner(System.in);
+        int number = 200;
+        int[] arr = getFibonacciSequence(number);
+        System.out.println("The " + number + " sequence fibonacci");
+        displayFibonacci(arr);
     }
 
-    private static int[] findFibonacciSequence(int i) {
-        int[] fiboArray = new int[i];
-        findFibonacciNumbers(fiboArray, 0);
-        return fiboArray;
+    private static int[] getFibonacciSequence(int n) {
+        int[] arr = new int[n];
+        getFibonacci(arr, 0);
+        return arr;
     }
 
-    private static void findFibonacciNumbers(int[] fiboArray, int count) {
-        // Check base case of find fibonacci recursively
-        if (count == 0 || count == 1) {
-            fiboArray[count] = count;
+    private static void getFibonacci(int arr[], int count) {
+        if (count <= 1) {
+            arr[count] = count;
         } else {
-            fiboArray[count] = fiboArray[count - 1] + fiboArray[count - 2];
+            arr[count] = arr[count - 1] + arr[count - 2];
         }
         count++;
-        // Check full array to stop recursively
-        if (count == fiboArray.length) {
+        if (count == arr.length) {
             return;
         }
-        findFibonacciNumbers(fiboArray, count);
+        getFibonacci(arr, count);
     }
 
-    private static void displayFibonacciSequence(int[] fiboArray) {
-        int arraySize = fiboArray.length;
-        System.out.println("The " + arraySize + " sequence fibonacci:");
-        for (int i = 0; i < arraySize; i++) {
-            // Check to print the ordinal number of elements
-            System.out.print(fiboArray[i]);
-            // Check to print comma
-            if (i < arraySize - 1) {
-                System.out.print(", ");
-            }
+    private static void displayFibonacci(int arr[]) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
         }
     }
 }
