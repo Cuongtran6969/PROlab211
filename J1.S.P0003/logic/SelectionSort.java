@@ -10,7 +10,7 @@ import constant.IConstant;
  *
  * @author HP
  */
-public class InsertionSort {
+public class SelectionSort {
     
     /**
      * random value for each element of array in range 0 to array length
