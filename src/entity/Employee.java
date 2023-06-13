@@ -116,11 +116,11 @@ public class Employee {
         this.agency = agency;
     }
 
- 
+    @Override
     public String toString() {
-        return String.format("%-10s%-15s%-15s%-15s%-25s%-15s%-15s%-10s%-15s%-15s\n",
-            id, firstName, lastName, lastName, phone, email, address, dob, sex, salary, agency);
+        return String.format(
+                "%-10s%-15s%-15s%-15s%-25s%-15s%-15s%-10s%-15s%-15s\n",
+                id, firstName, lastName, lastName, phone, email, address, dob,
+                sex, salary, agency);
     }
-    
-    
 }
