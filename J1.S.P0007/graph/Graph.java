@@ -29,7 +29,7 @@ public class Graph {
      * @param j second vertices of edge
      */
     public void addEdge(int i, int j) {
-       if(i>0 && i<numberVertices && j>0 && j<numberVertices ) {
+       if(i>=0 && i<numberVertices && j>=0 && j<numberVertices ) {
          adjacencyMatrix[i][j] = true;
          adjacencyMatrix[j][i] = true;
        }
@@ -43,11 +43,9 @@ public class Graph {
      * @return true if i and j belong to a edge in graph
      */
     public boolean isEdge(int i, int j) {
-      if(i>0 && i<numberVertices && j>0 && j<numberVertices ) {
+      if(i>=0 && i<numberVertices && j>=0 && j<numberVertices ) {
          return adjacencyMatrix[i][j] || adjacencyMatrix[j][i];
        }
       return false;
     }
-    
-    
 }
