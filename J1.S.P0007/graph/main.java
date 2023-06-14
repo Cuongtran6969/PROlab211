@@ -15,7 +15,7 @@ public class main {
     
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Graph Graph = new Graph(6);
+        Graph Graph = new Graph(5);
         Graph.addEdge(1, 4);
         Graph.addEdge(2, 4);
         Graph.addEdge(2, 5);
