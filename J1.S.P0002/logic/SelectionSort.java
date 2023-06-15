@@ -28,7 +28,7 @@ public class SelectionSort {
     }
     
     /**
-     * check type sort to sort ascending or descending by bubble sort
+     * check type sort to sort ascending or descending by selection sort
      * 
      * @param arr      the array want to sort
      * @param typeSort the type will sort is ascending or descending
