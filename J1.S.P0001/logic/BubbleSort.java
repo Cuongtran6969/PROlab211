@@ -11,37 +11,33 @@ import constant.IConstant;
  * @author HP
  */
 public class BubbleSort {
+    private int arr[];
     
     /**
      * random value for each element of array in range 0 to array length
      *
      * @param arrayLength the number of array to create a random array
-     * @return array have value random
      */
-    public static int[] randomArray(int arrayLength) {
-        int[] arr = new int[arrayLength];
+    public void generateRandomArray(int arrayLength) {
+        arr = new int[arrayLength];
         Random random = new Random();
         for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(arrayLength);
         }
-        return arr;
     }
     
     /**
      * check type sort to sort ascending or descending by bubble sort
      * 
-     * @param arr      the array want to sort
-     * @param typeSort the type will sort is ascending or descending
+     * @param TYPE_SORT the type will sort is ascending or descending
      */
-    public static void sortArray(int arr[], final String typeSort) {
-        switch (typeSort) {
+    public void sortArray(final String TYPE_SORT) {
+        switch (TYPE_SORT) {
             case IConstant.ASC:
                 for (int i = 0; i < arr.length - 1; i++) {
                     for (int j = i + 1; j < arr.length; j++) {
                         if (arr[i] > arr[j]) {
-                            int temp = arr[i];
-                            arr[i] = arr[j];
-                            arr[j] = temp;
+                            swap(i, j);
                         }
                     }
                 }
@@ -50,9 +46,7 @@ public class BubbleSort {
                 for (int i = 0; i < arr.length - 1; i++) {
                     for (int j = i + 1; j < arr.length; j++) {
                         if (arr[i] < arr[j]) {
-                            int temp = arr[i];
-                            arr[i] = arr[j];
-                            arr[j] = temp;
+                            swap(i, j);
                         }
                     }
                 }
@@ -62,10 +56,8 @@ public class BubbleSort {
     
     /**
      * display value of each element of array
-     *
-     * @param arr array want to display
      */
-    public static void displayArray(int arr[]) {
+    public void displayArray() {
         System.out.print("The array: [");
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i]);
@@ -75,4 +67,12 @@ public class BubbleSort {
         }
         System.out.println("]");
     }
+
+    public void swap(int firstSecond, int secondIndex) {
+        int temp = arr[firstSecond];
+        arr[firstSecond] = arr[secondIndex];
+        arr[secondIndex] = temp;
+    }
 }
+
+
