@@ -28,7 +28,7 @@ public class LogicMatrix {
                 1, Integer.MAX_VALUE
         );
         int col = validate.getInt(
-                "Enter Row Matrix"+number+": ",
+                "Enter Col Matrix"+number+": ",
                 "The value out of range!",
                 "Invalid value",
                 1, Integer.MAX_VALUE
