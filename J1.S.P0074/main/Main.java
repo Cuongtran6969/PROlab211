@@ -29,22 +29,28 @@ public class Main {
             int[][] matrix1, matrix2;
             switch (choice) {
                 case 1:
+                    System.out.println("-----Addition-----");
                     matrix1 = logicMatrix.createMatrix(1);
                     matrix2 = logicMatrix.createMatrix(2);
+                    System.out.println("-----Result-----");
                     logicMatrix.additionMatrix(
                             matrix1, matrix2, Iconstant.ADDITION
                     );
                     break;
                 case 2:
+                    System.out.println("-----Subtraction-----");
                     matrix1 = logicMatrix.createMatrix(1);
                     matrix2 = logicMatrix.createMatrix(2);
+                    System.out.println("-----Result-----");
                     logicMatrix.subtractionMatrix(
                             matrix1, matrix2, Iconstant.SUBTRACTION
                     );
                     break;
                 case 3:
+                    System.out.println("-----Multiplication-----");
                     matrix1 = logicMatrix.createMatrix(1);
                     matrix2 = logicMatrix.createMatrix(2);
+                    System.out.println("-----Result-----");
                     logicMatrix.multiplicationMatrix(
                             matrix1, matrix2, Iconstant.MULTIPLICATION
                     );
