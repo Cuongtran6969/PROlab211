@@ -12,43 +12,35 @@ import java.util.Scanner;
  * @author HP
  */
 public class Validate {
-    private final Scanner SCANNER = new Scanner(System.in);
-    private final String REGEX_INTEGER = "\\d+";
+        private static final Scanner SCANNER = new Scanner(System.in);
     
     /**
-     * validate input data
-     * 
-     * @param messInfo          notify to user input
-     * @param messageErrorRange notify when input value out of range
-     * @param messageInvalidate notify when input value wrong format
-     * @param min               limit min 
-     * @param max               limit max
+     * Get a valid integer input from the user within a specified range.
+     *
+     * @param messInfo            notify to user input
+     * @param messErrorRange      notify when input value out of range
+     * @param messErrorInvalidate notify when input value wrong format
+     * @param min                 minimum limit
+     * @param max                 maximum limit
      * @return the integers number validate
      */
-    public int getInt(
+    public static int getInt(
             String messInfo,
-            String messageErrorRange,
-            String messageInvalidate,
-            double min,
-            double max
+            String messErrorRange, 
+            String messErrorInvalidate,
+            int min, int max
     ) {
-        Scanner scanner = new Scanner(System.in);
-        boolean flag = true;
-        int number = 0;
-        while (flag) {
-            System.out.print(messInfo);
-            String numberStr = scanner.nextLine().trim();
-            if (numberStr.matches(REGEX_INTEGER)) {
-                number = Integer.valueOf(numberStr);
+        do {
+            try {
+                System.out.print(messInfo);
+                int number = Integer.parseInt(SCANNER.nextLine());
                 if (number >= min && number <= max) {
-                    flag = false;
-                } else {
-                    System.out.println(messageErrorRange);
+                    return number;
                 }
-            } else {
-                System.out.println(messageInvalidate);
+                System.out.println(messErrorRange);
+            } catch (NumberFormatException e) {
+                System.out.println(messErrorInvalidate);
             }
-        }
-        return number;
-    }
+        } while (true);
+    
 }
