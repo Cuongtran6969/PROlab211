@@ -25,17 +25,17 @@ public class LogicMatrix {
                 "Enter Row Matrix "+number+":",
                 "The value out of range!",
                 "Invalid value",
-                1, Integer.MAX_VALUE
+                0, Integer.MAX_VALUE
         );
         int col = validate.getInt(
                 "Enter Col Matrix "+number+":",
                 "The value out of range!",
                 "Invalid value",
-                1, Integer.MAX_VALUE
+                0, Integer.MAX_VALUE
         );
         int[][] matrix = new int[row][col];
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
+        for (int i = 1; i <= row; i++) {
+            for (int j = 1; j <= col; j++) {
                 matrix[i][j] = validate.getInt(
                         "Enter matrix" + number + "[" + i + "]" + "[" + j + "]:"
                         ,"The value out of range!"
@@ -60,16 +60,16 @@ public class LogicMatrix {
             final String TYPE_CALCULATE
     ) {
         int row1 = matrix1.length;
-        int col1 = matrix1[0].length;
+        int col1 = matrix1[1].length;
         int row2 = matrix2.length;
-        int col2 = matrix2[0].length;
+        int col2 = matrix2[1].length;
         boolean validCalcualte = checkValidateCalculate(
                 row1, col1, row2, col2, TYPE_CALCULATE
         );
         if (validCalcualte) {
             int[][] matrixResult = new int[row1][col1];
-            for (int i = 0; i < row1; i++) {
-                for (int j = 0; j < col1; j++) {
+            for (int i = 1; i <= row1; i++) {
+                for (int j = 1; j <= col1; j++) {
                     matrixResult[i][j] = matrix1[i][j] + matrix2[i][j];
                 }
             }
@@ -98,16 +98,16 @@ public class LogicMatrix {
             final String TYPE_CALCULATE
     ) {
         int row1 = matrix1.length;
-        int col1 = matrix1[0].length;
+        int col1 = matrix1[1].length;
         int row2 = matrix2.length;
-        int col2 = matrix2[0].length;
+        int col2 = matrix2[1].length;
         boolean validCalcualte = checkValidateCalculate(
                 row1, col1, row2, col2, TYPE_CALCULATE
         );
         if (validCalcualte) {
             int[][] matrixResult = new int[row1][col1];
-            for (int i = 0; i < row1; i++) {
-                for (int j = 0; j < col1; j++) {
+            for (int i = 1; i <= row1; i++) {
+                for (int j = 1; j <= col1; j++) {
                     matrixResult[i][j] = matrix1[i][j] - matrix2[i][j];
                 }
             }
@@ -136,16 +136,16 @@ public class LogicMatrix {
             final String TYPE_CALCULATE
     ) {
         int row1 = matrix1.length;
-        int col1 = matrix1[0].length;
+        int col1 = matrix1[1].length;
         int row2 = matrix2.length;
-        int col2 = matrix2[0].length;
+        int col2 = matrix2[1].length;
         boolean validCalcualte = checkValidateCalculate(
                 row1, col1, row2, col2, TYPE_CALCULATE
         );
         if (validCalcualte) {
             int[][] matrixResult = new int[row1][col2];
-            for (int i = 0; i < row1; i++) {
-                for (int j = 0; j < col2; j++) {
+            for (int i = 1; i <= row1; i++) {
+                for (int j = 11; j <= col2; j++) {
                     for (int k = 0; k < col1; k++) {
                         matrixResult[i][j] += matrix1[i][k] * matrix2[k][j];
                     }
@@ -169,9 +169,9 @@ public class LogicMatrix {
      */
     public void displayMatrix(int[][] matrix) {
         int row = matrix.length;
-        int col = matrix[0].length;
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
+        int col = matrix[1].length;
+        for (int i = 1; i <= row; i++) {
+            for (int j = 1; j <= col; j++) {
                 System.out.print("[" + matrix[i][j] + "]");
             }
             System.out.println();
