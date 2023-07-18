@@ -5,12 +5,17 @@
             <url>src/main/Main.java</url>
             <bookmark id="1">
                 <name/>
-                <line>47</line>
+                <line>53</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/HP/OneDrive/Documents/NetBeansProjects/J1.S.P0074/src/constant/Iconstant.java</file>
+            <file>file:/C:/Users/HP/OneDrive/Documents/NetBeansProjects/J1.S.P0074/src/main/Main.java</file>
+            <file>file:/C:/Users/HP/OneDrive/Documents/NetBeansProjects/J1.S.P0074/src/bo/logicMatrix.java</file>
+            <file>file:/C:/Users/HP/OneDrive/Documents/NetBeansProjects/J1.S.P0074/src/entity/Matrix.java</file>
+        </group>
     </open-files>
 </project-private>

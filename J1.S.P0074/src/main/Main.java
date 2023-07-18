@@ -34,15 +34,18 @@ public class Main {
             switch (choice) {
                 case 1:
                     try{
-                    logicMatrix.createMatrix(
-                            firstMatrix, secondMatrix,
+                    logicMatrix.inputMatrix(
+                            firstMatrix,
+                            secondMatrix,
                             Iconstant.ADDITION
                     );
                     System.out.println("=======Result=======");
                     firstMatrix.displayMatrix();
                     System.out.println("+");
                     secondMatrix.displayMatrix();
-                    resultsMatrix = firstMatrix.addition(secondMatrix);
+                    resultsMatrix = logicMatrix.addition(
+                            firstMatrix, secondMatrix
+                    );
                     System.out.println("=");
                     resultsMatrix.displayMatrix();
                     }catch(InvalidSizeMatrixException e) {
@@ -51,15 +54,18 @@ public class Main {
                     break;
                 case 2:
                     try{
-                    logicMatrix.createMatrix(
-                            firstMatrix, secondMatrix,
+                    logicMatrix.inputMatrix(
+                            firstMatrix,
+                            secondMatrix,
                             Iconstant.SUBTRACTION
                     );
                     System.out.println("=======Result=======");
                     firstMatrix.displayMatrix();
                     System.out.println("-");
                     secondMatrix.displayMatrix();
-                    resultsMatrix = firstMatrix.subtraction(secondMatrix);
+                    resultsMatrix = logicMatrix.subtraction(
+                            firstMatrix, firstMatrix
+                    );
                     System.out.println("=");
                     resultsMatrix.displayMatrix();
                     }catch(InvalidSizeMatrixException e) {
@@ -69,15 +75,18 @@ public class Main {
                     break;
                 case 3:
                     try{
-                    logicMatrix.createMatrix(
-                            firstMatrix, secondMatrix,
+                    logicMatrix.inputMatrix(
+                            firstMatrix,
+                            secondMatrix,
                             Iconstant.MULTIPLICATION
                     );
                     System.out.println("=======Result=======");
                     firstMatrix.displayMatrix();
                     System.out.println("*");
                     secondMatrix.displayMatrix();
-                    resultsMatrix = firstMatrix.multiplication(secondMatrix);
+                    resultsMatrix = logicMatrix.multiplication(
+                            firstMatrix, secondMatrix
+                    );
                     System.out.println("=");
                     resultsMatrix.displayMatrix();
                     }catch(InvalidSizeMatrixException e) {
